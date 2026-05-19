@@ -1,7 +1,7 @@
 import { useMemo, useState, type FormEvent } from "react";
 import { GoldAccent } from "./SectionHeader";
 
-const CONTACT_EMAIL = "magalhaes.dylan@gmail.com";
+const CONTACT_EMAIL = "contact@r2-d2-france.com";
 
 const CONTACTS = [
   {
