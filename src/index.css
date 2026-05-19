@@ -1,0 +1,149 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-gold: #c9a84c;
+  --color-gold-light: #f0d080;
+  --color-gold-pale: #edd98a;
+  --color-ink: #0a0a0a;
+  --color-dark: #111;
+  --color-dark2: #1a1712;
+  --color-cream: #f5edd6;
+  --color-parchment: #fdfaf4;
+  --color-franchise-deep: #0f0c06;
+  --font-raleway: 'Raleway', ui-sans-serif, system-ui, sans-serif;
+  --font-script: 'Pinyon Script', 'Italianno', ui-serif, serif;
+  --font-cinzel: 'Cinzel', ui-serif, serif;
+  --font-deco: 'Cinzel Decorative', ui-serif, serif;
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes blink-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+  40%,
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .hero-rise {
+    opacity: 0;
+    animation: hero-rise 0.8s ease-out forwards;
+  }
+  .hero-rise-1 {
+    animation-delay: 0.05s;
+  }
+  .hero-rise-2 {
+    animation-delay: 0.15s;
+  }
+  .hero-rise-2b {
+    animation-delay: 0.21s;
+  }
+  .hero-rise-3 {
+    animation-delay: 0.28s;
+  }
+  .hero-rise-4 {
+    animation-delay: 0.4s;
+  }
+  .hero-rise-5 {
+    animation-delay: 0.55s;
+  }
+  .hero-rise-image {
+    animation-delay: 0.35s;
+    animation-duration: 0.9s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-rise {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply m-0 min-h-dvh overflow-x-hidden bg-ink font-raleway text-cream antialiased;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid rgb(201 168 76 / 0.6);
+    outline-offset: 3px;
+  }
+}
