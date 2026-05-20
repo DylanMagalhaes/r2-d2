@@ -7,7 +7,7 @@ const points: readonly Point[] = [
   {
     Icon: Palette,
     title: "Charte & couleurs",
-    text: "Habillage des panneaux, cadres et zones visibles selon votre palette (codes RAL, CMJN ou guide fourni) pour une cohérence immédiate avec votre identité.",
+    text: "Habillage des panneaux, cadres et zones visibles selon votre palette graphique pour une cohérence immédiate avec votre identité.",
   },
   {
     Icon: Monitor,
@@ -44,8 +44,8 @@ export function MachineBrandingSection() {
             <strong className="font-medium text-gold-pale">
               habillés aux couleurs de votre marque
             </strong>{" "}
-            : finitions, signalétique et parcours visuel s’alignent sur votre charte — idéal pour retail,
-            corporate ou activation événementielle.
+            : finitions, signalétique et parcours visuel s’alignent sur votre
+            charte — idéal pour retail, corporate ou activation événementielle.
           </p>
         </div>
 
@@ -72,8 +72,9 @@ export function MachineBrandingSection() {
         </ul>
 
         <p className="mt-10 max-w-3xl rounded-xl border border-white/[0.06] bg-ink/40 px-5 py-4 text-[13px] font-light leading-relaxed text-cream/52">
-          Les possibilités d’habillage et les contraintes techniques dépendent du modèle et du site de
-          déploiement — nous détaillons un cahier des charges sur la base de votre marque et de votre lieu.
+          Les possibilités d’habillage et les contraintes techniques dépendent
+          du modèle et du site de déploiement — nous détaillons un cahier des
+          charges sur la base de votre marque et de votre lieu.
         </p>
       </div>
     </section>
