@@ -2,10 +2,11 @@ import { ArtLatteSection } from './ArtLatteSection'
 import { Concept } from './Concept'
 import { Cover } from './Cover'
 import { FooterCta } from './FooterCta'
-import { FranchiseSection } from './FranchiseSection'
 import { KukuMachineSection } from './KukuMachineSection'
+import { MachineBrandingSection } from './MachineBrandingSection'
 import { Navbar } from './Navbar'
 import { Offres } from './Offres'
+import { PartnershipSection } from './PartnershipSection'
 import { PhotoCarousel } from './PhotoCarousel'
 
 export function Plaquette() {
@@ -18,7 +19,8 @@ export function Plaquette() {
       <PhotoCarousel />
       <ArtLatteSection />
       <KukuMachineSection />
-      <FranchiseSection />
+      <MachineBrandingSection />
+      <PartnershipSection />
       <FooterCta />
     </>
   )

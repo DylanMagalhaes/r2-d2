@@ -5,6 +5,7 @@ export const SECTION_NAV = [
   { id: 'galerie', label: 'Galerie' },
   { id: 'art-latte', label: 'Art Latte' },
   { id: 'machine', label: 'Machine' },
-  { id: 'franchise', label: 'Franchise' },
+  { id: 'habillage', label: 'Habillage' },
+  { id: 'partenariat', label: 'Partenariat' },
   { id: 'contact', label: 'Contact' },
 ] as const

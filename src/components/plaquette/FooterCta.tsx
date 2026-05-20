@@ -17,8 +17,9 @@ const CONTACTS = [
 ] as const;
 
 const INTENTION_OPTS = [
-  { value: "franchise", label: "Candidature / franchise" },
-  { value: "lieu_evenementiel", label: "Offre événements & lieu public" },
+  { value: "equipement", label: "Équipement & déploiement lieu" },
+  { value: "habillage", label: "Habillage machine — couleurs marque" },
+  { value: "lieu_evenementiel", label: "Événements & lieu public" },
   { value: "presse_partenariat", label: "Presse & partenariats" },
   { value: "autre", label: "Autre demande" },
 ] as const;
@@ -79,7 +80,7 @@ export function FooterCta() {
         <div className="grid items-start gap-10 md:grid-cols-12 md:gap-12">
           <div className="md:col-span-5">
             <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-gold/20 bg-gold/[0.06] px-4 py-2 font-cinzel text-[10px] uppercase tracking-[0.35em] text-gold/90">
-              <span className="text-gold">06</span>
+              <span className="text-gold">07</span>
               <span aria-hidden="true" className="h-3 w-px bg-gold/25" />
               <span>Contact</span>
             </div>
@@ -87,8 +88,8 @@ export function FooterCta() {
               Parlons de votre <GoldAccent>projet</GoldAccent>
             </h2>
             <p className="mt-5 max-w-xl text-[15px] font-light leading-relaxed text-cream/60">
-              Franchise, ouverture ou étude terrain : précisez en deux minutes
-              votre contexte&nbsp;; nous revenons vers vous sous{" "}
+              Déploiement, habillage marque ou étude lieu : précisez en deux minutes votre
+              contexte&nbsp;; nous revenons vers vous sous{" "}
               <span className="text-cream/75">48&nbsp;h ouvrées</span> après
               lecture du message.
             </p>
@@ -132,7 +133,7 @@ export function FooterCta() {
                     id="intent"
                     name="intention"
                     required
-                    defaultValue="franchise"
+                    defaultValue="equipement"
                     className="mt-2 w-full rounded-xl border border-white/[0.12] bg-ink/50 px-4 py-3 text-[14px] font-light text-cream/88 outline-none transition focus:border-gold/40 focus:ring-1 focus:ring-gold/30"
                   >
                     {INTENTION_OPTS.map(({ value, label }) => (

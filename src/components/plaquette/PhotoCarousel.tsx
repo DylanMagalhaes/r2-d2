@@ -95,6 +95,10 @@ export function PhotoCarousel() {
               </>
             }
           />
+          <p className="text-[15px] font-light leading-relaxed text-cream/60 md:col-span-5 md:pb-1">
+            Aperçu de l&apos;univers premium R2-D2 — shootings et mises en situation pour vos projets
+            d&apos;équipement ou d&apos;activation.
+          </p>
         </div>
 
         <div

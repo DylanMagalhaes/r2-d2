@@ -26,11 +26,10 @@ const features: readonly Feature[] = [
   },
 ] as const
 
-const tags = [
+const tagsPlain = [
   'Opération 24h/24 · 7j/7',
   'Fabriqué par KOZA Robotic',
   'Recettes artisanales',
-  'Design personnalisable',
 ] as const
 
 export function KukuMachineSection() {
@@ -66,7 +65,7 @@ export function KukuMachineSection() {
             </p>
 
             <ul className="mt-7 flex flex-wrap gap-2">
-              {tags.map((tag) => (
+              {tagsPlain.map((tag) => (
                 <li
                   key={tag}
                   className="rounded-full border border-white/[0.1] bg-white/[0.03] px-4 py-2 font-cinzel text-[10px] uppercase tracking-[0.22em] text-cream/65 transition hover:border-gold/30 hover:text-gold"
@@ -74,6 +73,14 @@ export function KukuMachineSection() {
                   {tag}
                 </li>
               ))}
+              <li>
+                <a
+                  href="#habillage"
+                  className="inline-flex rounded-full border border-white/[0.1] bg-white/[0.03] px-4 py-2 font-cinzel text-[10px] uppercase tracking-[0.22em] text-cream/65 transition hover:border-gold/30 hover:text-gold"
+                >
+                  Habillage aux couleurs marque
+                </a>
+              </li>
             </ul>
           </div>
 
