@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --color-gold: #c9a84c;
@@ -10,10 +10,10 @@
   --color-cream: #f5edd6;
   --color-parchment: #fdfaf4;
   --color-franchise-deep: #0f0c06;
-  --font-raleway: 'Raleway', ui-sans-serif, system-ui, sans-serif;
-  --font-script: 'Pinyon Script', 'Italianno', ui-serif, serif;
-  --font-cinzel: 'Cinzel', ui-serif, serif;
-  --font-deco: 'Cinzel Decorative', ui-serif, serif;
+  --font-raleway: "Raleway", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Pinyon Script", "Italianno", ui-serif, serif;
+  --font-cinzel: "Cinzel", ui-serif, serif;
+  --font-deco: "Cinzel Decorative", ui-serif, serif;
 }
 
 @keyframes fade-in-down {

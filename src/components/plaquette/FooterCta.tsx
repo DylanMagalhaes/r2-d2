@@ -11,8 +11,8 @@ const CONTACTS = [
   },
   {
     label: "Téléphone",
-    value: "+33 (0)1 00 00 00 00",
-    href: "tel:+33100000000",
+    value: "+33 (0)7 77 31 87 87",
+    href: "tel:+330777318787",
   },
 ] as const;
 
@@ -88,8 +88,8 @@ export function FooterCta() {
               Parlons de votre <GoldAccent>projet</GoldAccent>
             </h2>
             <p className="mt-5 max-w-xl text-[15px] font-light leading-relaxed text-cream/60">
-              Déploiement, habillage marque ou étude lieu : précisez en deux minutes votre
-              contexte&nbsp;; nous revenons vers vous sous{" "}
+              Déploiement, habillage marque ou étude lieu : précisez en deux
+              minutes votre contexte&nbsp;; nous revenons vers vous sous{" "}
               <span className="text-cream/75">48&nbsp;h ouvrées</span> après
               lecture du message.
             </p>

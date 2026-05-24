@@ -32,8 +32,8 @@ export function PartnershipFaq() {
         Questions fréquentes
       </h3>
       <p className="mt-3 max-w-2xl text-[14px] font-light leading-relaxed text-cream/55">
-        Réponses d’orientation ; tout engagement précis résulte d’un échange métier puis d’un contrat ou
-        d’un devis signé.
+        Réponses d’orientation ; tout engagement précis résulte d’un échange
+        métier puis d’un contrat ou d’un devis signé.
       </p>
 
       <div className="mt-9 space-y-2">
@@ -53,7 +53,9 @@ export function PartnershipFaq() {
               />
             </summary>
             <div className="border-t border-white/[0.06] px-5 pb-4 pt-0 sm:px-6 sm:pb-5">
-              <p className="pt-3 text-[14px] font-light leading-[1.75] text-cream/62">{a}</p>
+              <p className="pt-3 text-[14px] font-light leading-[1.75] text-cream/62">
+                {a}
+              </p>
             </div>
           </details>
         ))}

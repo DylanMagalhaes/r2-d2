@@ -140,8 +140,9 @@ function ArtLatteRoi() {
         ))}
       </ul>
       <p className="mt-6 rounded-lg border border-white/[0.05] bg-ink/30 px-3.5 py-3 font-raleway text-[11px] font-light leading-relaxed text-cream/42">
-        Métriques marketing présentées à titre indicatif, issues d&apos;observations qualitatives et de
-        comparaisons internes&nbsp;; elles peuvent varier selon votre zone, vos tarifs et votre activité,
+        Métriques marketing présentées à titre indicatif, issues
+        d&apos;observations qualitatives et de comparaisons internes&nbsp;;
+        elles peuvent varier selon votre zone, vos tarifs et votre activité,
         sans valeur contractuelle.
       </p>
     </Surface>

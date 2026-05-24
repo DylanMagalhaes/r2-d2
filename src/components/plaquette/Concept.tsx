@@ -1,11 +1,11 @@
-import { GoldAccent, SectionHeader } from './SectionHeader'
+import { GoldAccent, SectionHeader } from "./SectionHeader";
 
 const stats = [
-  { k: '2 en 1', v: 'Concepts sous une même enseigne' },
-  { k: '100%', v: 'Recettes premium par nos chefs' },
-  { k: '24/7', v: 'Automatisation robotique' },
-  { k: '∞', v: 'Carte chaude & glacée, évolutive' },
-] as const
+  { k: "2 en 1", v: "Concepts sous une même enseigne" },
+  { k: "100%", v: "Recettes premium par nos chefs" },
+  { k: "24/7", v: "Automatisation robotique" },
+  { k: "∞", v: "Carte chaude & glacée, évolutive" },
+] as const;
 
 export function Concept() {
   return (
@@ -26,17 +26,25 @@ export function Concept() {
           />
           <div className="mt-8 max-w-prose space-y-5 text-[15px] font-light leading-[1.85] text-cream/70">
             <p>
-              R2-D2 Coffee & Ice Cream réinvente la restauration rapide premium : une robotique de pointe au
-              service de recettes d&apos;exception, signées par nos artisans du goût.
+              R2-D2 Coffee & Ice Cream réinvente la restauration rapide premium
+              : une robotique de pointe au service de recettes d&apos;exception,
+              signées par nos artisans du goût.
             </p>
             <p>
-              Chaque point de vente devient un lieu de vie spectaculaire, où la technologie prolonge l&apos;art
-              culinaire. Un modèle pensé pour une clientèle exigeante et connectée.
+              Chaque point de vente devient un lieu de vie spectaculaire, où la
+              technologie prolonge l&apos;art culinaire. Un modèle pensé pour
+              une clientèle exigeante et connectée.
             </p>
             <p>
-              Nos deux enseignes, <strong className="font-normal text-cream/90">R2-D2 Coffee</strong> et{' '}
-              <strong className="font-normal text-cream/90">R2-D2 Ice Cream</strong>, se déploient seules ou en
-              duo selon votre marché.
+              Nos deux enseignes,{" "}
+              <strong className="font-normal text-cream/90">
+                R2-D2 Coffee
+              </strong>{" "}
+              et{" "}
+              <strong className="font-normal text-cream/90">
+                R2-D2 Ice Cream
+              </strong>
+              , se déploient seules ou en duo selon votre marché.
             </p>
           </div>
         </div>
@@ -50,11 +58,13 @@ export function Concept() {
               <div className="bg-linear-to-r from-gold-light to-gold bg-clip-text font-cinzel text-2xl font-semibold tracking-wide text-transparent md:text-[1.65rem]">
                 {k}
               </div>
-              <div className="mt-1 text-[13px] font-normal leading-snug text-cream/55">{v}</div>
+              <div className="mt-1 text-[13px] font-normal leading-snug text-cream/55">
+                {v}
+              </div>
             </li>
           ))}
         </ul>
       </div>
     </section>
-  )
+  );
 }

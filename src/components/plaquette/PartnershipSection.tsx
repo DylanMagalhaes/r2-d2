@@ -72,8 +72,9 @@ export function PartnershipSection() {
             }
           />
           <p className="text-[15px] font-light leading-relaxed text-cream/60 md:col-span-5 md:pb-2">
-            Nous accompagnons opérateurs, lieux premium et équipes événementielles&nbsp;: mise en œuvre
-            terrain, transfert de compétences et suivi après installation — sans modèle franchise.
+            Nous accompagnons opérateurs, lieux premium et équipes
+            événementielles&nbsp;: mise en œuvre terrain, transfert de
+            compétences et suivi après installation — sans modèle franchise.
           </p>
         </div>
 
@@ -84,8 +85,9 @@ export function PartnershipSection() {
             subtitle="Une équipe autonome en quelques séances concrètes."
           >
             <p>
-              Notre programme vous transmet l&apos;essentiel&nbsp;: pilotage des équipements robotiques,
-              gestion des flux, standards qualité du concept et posture service premium dans votre contexte.
+              Notre programme vous transmet l&apos;essentiel&nbsp;: pilotage des
+              équipements robotiques, gestion des flux, standards qualité du
+              concept et posture service premium dans votre contexte.
             </p>
             <BulletList
               items={[
@@ -106,8 +108,9 @@ export function PartnershipSection() {
           >
             <p>
               R2-D2 Coffee peut être déployé{" "}
-              <em className="text-cream/85">avec un socle déjà défini</em> — automatisation,
-              identité packs, carte et recettes, et repères digitaux lorsque c’est prévu avec vous.
+              <em className="text-cream/85">avec un socle déjà défini</em> —
+              automatisation, identité packs, carte et recettes, et repères
+              digitaux lorsque c’est prévu avec vous.
             </p>
             <BulletList
               items={[
@@ -129,15 +132,20 @@ export function PartnershipSection() {
             <p>
               Votre robot opère{" "}
               <strong className="font-medium text-gold-pale">
-                sans interruption des cycles prévus — ni pause ni charge sociale de production équivalente
+                sans interruption des cycles prévus — ni pause ni charge sociale
+                de production équivalente
               </strong>
-              . Le ticket moyen peut progresser lorsque le lieu capitalise sur l&apos;expérience spectacle
-              et la qualité perçue.
+              . Le ticket moyen peut progresser lorsque le lieu capitalise sur
+              l&apos;expérience spectacle et la qualité perçue.
             </p>
 
             <ul className="mt-7 space-y-4 border-t border-white/[0.08] pt-7">
               {[
-                ["−80%", "de coûts opérationnels", "vs. café traditionnel (ordre)"],
+                [
+                  "−80%",
+                  "de coûts opérationnels",
+                  "vs. café traditionnel (ordre)",
+                ],
                 ["×2", "ticket moyen", "situations comparables rapportées"],
                 ["1er mois", "retour envisageable", "selon contexte lieu"],
               ].map(([k, label, hint]) => (
@@ -151,14 +159,17 @@ export function PartnershipSection() {
                   <div className="mt-1 font-cinzel text-[11px] uppercase tracking-[0.2em] text-gold/75">
                     {label}
                   </div>
-                  <div className="mt-1 text-[13px] font-light text-cream/50">{hint}</div>
+                  <div className="mt-1 text-[13px] font-light text-cream/50">
+                    {hint}
+                  </div>
                 </li>
               ))}
             </ul>
             <p className="mt-5 rounded-lg border border-white/[0.05] bg-ink/40 px-3.5 py-3 font-raleway text-[11px] font-light leading-relaxed text-cream/45">
-              Indicateurs donnés à titre illustratif sous réserve d&apos;étude d&apos;emplacement et du
-              modèle économique de votre projet. Aucun résultat n&apos;est garanti ou contractuel hors
-              proposition écrite après analyse.
+              Indicateurs donnés à titre illustratif sous réserve d&apos;étude
+              d&apos;emplacement et du modèle économique de votre projet. Aucun
+              résultat n&apos;est garanti ou contractuel hors proposition écrite
+              après analyse.
             </p>
           </PillarCard>
         </div>
