@@ -1,4 +1,4 @@
-const COVER_LOGO = "/r2d2-hero.svg";
+const COVER_LOGO = "/plaquette/img-0.jpg";
 
 const trustStrip = [
   { k: "100%", v: "Arabica fraîchement moulu" },
@@ -40,8 +40,9 @@ export function Cover() {
           </h1>
 
           <p className="hero-rise hero-rise-2b mx-auto mt-5 max-w-lg text-[13px] font-light leading-relaxed text-cream/50 lg:mx-0">
-            Pensé pour lieux premium, marques et événements qui veulent une expérience café & glaces forte
-            en image — les automates peuvent être habillés aux couleurs de votre marque.
+            Pensé pour lieux premium, marques et événements qui veulent une
+            expérience café & glaces forte en image — les automates peuvent être
+            habillés aux couleurs de votre marque.
           </p>
 
           <p className="hero-rise hero-rise-3 mx-auto mt-6 max-w-lg text-[clamp(15px,1.35vw,17px)] font-light leading-relaxed text-cream/60 lg:mx-0">

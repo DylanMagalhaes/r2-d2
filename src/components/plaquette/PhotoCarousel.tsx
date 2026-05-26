@@ -16,17 +16,17 @@ type Slide = {
   caption: string;
 };
 
-/** Visuels hébergés localement sous `public/plaquette/` (pas d’images placeholder externes). */
+/** Visuels hébergés localement sous `public/` (pas d’images placeholder externes). */
 const SLIDES: readonly Slide[] = [
   {
-    src: "/plaquette/img-0.jpg",
+    src: "/r2d2-hero.svg",
     alt: "Présentation du robot barista et de l’univers café & glaces R2-D2.",
     title: "Showroom café & robots",
     caption:
       "Mise en scène de l’espace convivial avec le bras robotique et l’habillage noir & or.",
   },
   {
-    src: "/plaquette/img-1.jpg",
+    src: "/art-latte-preview.svg",
     alt: "Détail d’une boisson chaude et possibilités de personnalisation sur mousse.",
     title: "Signature visuelle Art Latte",
     caption:
