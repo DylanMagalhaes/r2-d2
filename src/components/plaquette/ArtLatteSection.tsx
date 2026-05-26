@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { GoldAccent, SectionHeader } from "./SectionHeader";
 
-const LATTE_IMG = "/plaquette/img-1.jpg";
+const LATTE_IMG = "/art-latte-preview.svg";
 
 type Drink = { Icon: LucideIcon; name: string };
 

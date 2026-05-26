@@ -7,21 +7,21 @@ import { MachineBrandingSection } from "./MachineBrandingSection";
 import { Navbar } from "./Navbar";
 import { Offres } from "./Offres";
 import { PartnershipSection } from "./PartnershipSection";
-// import { PhotoCarousel } from './PhotoCarousel'
 
 export function Plaquette() {
   return (
     <>
       <Navbar />
-      <Cover />
-      <Concept />
-      <Offres />
-      {/* <PhotoCarousel /> */}
-      <ArtLatteSection />
-      <KukuMachineSection />
-      <MachineBrandingSection />
-      <PartnershipSection />
-      <FooterCta />
+      <main>
+        <Cover />
+        <Concept />
+        <Offres />
+        <ArtLatteSection />
+        <KukuMachineSection />
+        <MachineBrandingSection />
+        <PartnershipSection />
+        <FooterCta />
+      </main>
     </>
   );
 }

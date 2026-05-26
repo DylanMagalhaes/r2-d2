@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://r2-d2-france.com/sitemap.xml

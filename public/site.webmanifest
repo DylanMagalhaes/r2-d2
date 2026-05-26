@@ -1,0 +1,25 @@
+{
+  "name": "R2-D2 Coffee & Ice Cream",
+  "short_name": "R2-D2 Coffee",
+  "description": "Machines robotisées pour café premium, glaces artisanales, Art Latte et habillage aux couleurs de marque.",
+  "lang": "fr-FR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0c0b09",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

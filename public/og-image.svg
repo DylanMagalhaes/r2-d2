@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="R2-D2 Coffee & Ice Cream">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="46%" r="62%">
+      <stop offset="0%" stop-color="#2b2107"/>
+      <stop offset="58%" stop-color="#11100d"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0d080"/>
+      <stop offset="52%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9a7328"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="600" cy="300" r="185" fill="none" stroke="url(#gold)" stroke-width="4" opacity=".9"/>
+  <circle cx="600" cy="300" r="142" fill="none" stroke="#edd98a" stroke-width="2" opacity=".45"/>
+  <text x="600" y="304" text-anchor="middle" fill="url(#gold)" font-family="Georgia, serif" font-size="110" font-weight="800" letter-spacing="7">R2-D2</text>
+  <text x="600" y="374" text-anchor="middle" fill="#f5edd6" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="12">COFFEE &amp; ICE CREAM</text>
+  <text x="600" y="455" text-anchor="middle" fill="#edd98a" font-family="Arial, sans-serif" font-size="24" letter-spacing="2">Machines robotisees - Art Latte - Habillage marque</text>
+</svg>

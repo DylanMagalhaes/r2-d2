@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Art Latte personnalise R2-D2 Coffee">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#2a1f07"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0d080"/>
+      <stop offset="55%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9a7328"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <circle cx="450" cy="450" r="302" fill="#1b140d" stroke="#c9a84c" stroke-width="5"/>
+  <circle cx="450" cy="450" r="235" fill="#f5edd6"/>
+  <circle cx="450" cy="450" r="164" fill="#d2a56f" opacity=".72"/>
+  <circle cx="450" cy="450" r="114" fill="#f5edd6" opacity=".82"/>
+  <text x="450" y="432" text-anchor="middle" fill="#0a0a0a" font-family="Georgia, serif" font-size="52" font-weight="700" letter-spacing="3">R2-D2</text>
+  <text x="450" y="492" text-anchor="middle" fill="#6f4a20" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="5">ART LATTE</text>
+  <path d="M290 660c82 58 236 58 320 0" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round"/>
+</svg>

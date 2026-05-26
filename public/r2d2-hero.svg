@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="960" viewBox="0 0 960 960" role="img" aria-label="Machine robotisee R2-D2 Coffee & Ice Cream">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#2c2208"/>
+      <stop offset="62%" stop-color="#11100d"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0d080"/>
+      <stop offset="52%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9a7328"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="960" rx="44" fill="url(#bg)"/>
+  <rect x="245" y="165" width="470" height="630" rx="38" fill="#12100d" stroke="#c9a84c" stroke-width="4"/>
+  <rect x="295" y="230" width="370" height="255" rx="26" fill="#050505" stroke="#edd98a" stroke-width="2" opacity=".86"/>
+  <circle cx="480" cy="356" r="84" fill="none" stroke="url(#gold)" stroke-width="10"/>
+  <path d="M480 275v160M398 356h164" stroke="#f0d080" stroke-width="9" stroke-linecap="round" opacity=".75"/>
+  <rect x="335" y="530" width="290" height="84" rx="20" fill="#0a0a0a" stroke="#c9a84c" stroke-width="2"/>
+  <text x="480" y="585" text-anchor="middle" fill="#f0d080" font-family="Georgia, serif" font-size="44" font-weight="700" letter-spacing="3">R2-D2</text>
+  <rect x="358" y="660" width="244" height="58" rx="29" fill="url(#gold)"/>
+  <text x="480" y="697" text-anchor="middle" fill="#0a0a0a" font-family="Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="4">COFFEE x ICE</text>
+</svg>

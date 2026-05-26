@@ -1,4 +1,4 @@
-const COVER_LOGO = "/plaquette/img-0.jpg";
+const COVER_LOGO = "/r2d2-hero.svg";
 
 const trustStrip = [
   { k: "100%", v: "Arabica fraîchement moulu" },
