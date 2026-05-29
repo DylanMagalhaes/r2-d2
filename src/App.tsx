@@ -1,5 +1,10 @@
-import { Plaquette } from './components/plaquette/Plaquette'
+import { Plaquette } from "./components/plaquette/Plaquette";
+import { LanguageProvider } from "./i18n/LanguageProvider";
 
 export default function App() {
-  return <Plaquette />
+  return (
+    <LanguageProvider>
+      <Plaquette />
+    </LanguageProvider>
+  );
 }

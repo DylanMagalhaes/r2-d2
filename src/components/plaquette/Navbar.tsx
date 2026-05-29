@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { SECTION_NAV } from "./navConfig";
+import { useLanguage } from "../../i18n/languageContext";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { SECTION_IDS, type SectionId } from "./navConfig";
 
-const NAV_LINKS = SECTION_NAV.filter(
-  (l) => l.id !== "accueil" && l.id !== "contact",
+const NAV_LINKS = SECTION_IDS.filter(
+  (id) => id !== "accueil" && id !== "contact",
 );
 
 export function Navbar() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("accueil");
+  const [active, setActive] = useState<SectionId>("accueil");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -19,7 +22,7 @@ export function Navbar() {
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
-    const sections = SECTION_NAV.map(({ id }) =>
+    const sections = SECTION_IDS.map((id) =>
       document.getElementById(id),
     ).filter((n): n is HTMLElement => Boolean(n));
     if (!sections.length) return;
@@ -29,7 +32,7 @@ export function Navbar() {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) setActive(visible.target.id);
+        if (visible?.target.id) setActive(visible.target.id as SectionId);
       },
       { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
@@ -50,9 +53,13 @@ export function Navbar() {
     };
   }, [open]);
 
+  function navLabel(id: SectionId) {
+    return t.nav[id];
+  }
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background,box-shadow,backdrop-filter,border-color] duration-300 ${
+      className={`nav-enter fixed inset-x-0 top-0 z-50 border-b transition-[background,box-shadow,backdrop-filter,border-color] duration-300 ${
         scrolled
           ? "border-white/10 bg-ink/85 shadow-[0_8px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl"
           : "border-transparent bg-ink/30 backdrop-blur-md"
@@ -79,9 +86,9 @@ export function Navbar() {
 
         <nav
           className="hidden items-center gap-1 lg:flex"
-          aria-label="Sections principales"
+          aria-label={t.nav.mainAria}
         >
-          {NAV_LINKS.map(({ id, label }) => {
+          {NAV_LINKS.map((id) => {
             const isActive = active === id;
             return (
               <a
@@ -91,7 +98,7 @@ export function Navbar() {
                   isActive ? "text-parchment" : "text-cream/65"
                 }`}
               >
-                {label}
+                {navLabel(id)}
                 <span
                   aria-hidden="true"
                   className={`pointer-events-none absolute inset-x-3 -bottom-px h-px origin-center bg-linear-to-r from-transparent via-gold to-transparent transition-transform duration-300 ${
@@ -103,35 +110,39 @@ export function Navbar() {
               </a>
             );
           })}
+          <LanguageSwitcher className="ml-2" />
           <a
             href="#contact"
-            className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-gold to-[#9a7328] px-5 py-2 font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-ink shadow-md shadow-gold/10 transition hover:brightness-110"
+            className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-gold to-[#9a7328] px-5 py-2 font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-ink shadow-md shadow-gold/10 transition hover:brightness-110"
           >
-            Contact
+            {t.nav.contact}
             <span aria-hidden="true" className="text-ink/80">
               →
             </span>
           </a>
         </nav>
 
-        <button
-          type="button"
-          className="-mr-1 inline-flex flex-col gap-1.5 rounded-md p-2 lg:hidden"
-          aria-expanded={open}
-          aria-controls="nav-mobile-panel"
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span
-            className={`h-0.5 w-6 origin-center rounded-full bg-gold transition ${open ? "translate-y-2 rotate-45" : ""}`}
-          />
-          <span
-            className={`h-0.5 w-6 rounded-full bg-gold transition ${open ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`h-0.5 w-6 origin-center rounded-full bg-gold transition ${open ? "-translate-y-2 -rotate-45" : ""}`}
-          />
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            className="-mr-1 inline-flex flex-col gap-1.5 rounded-md p-2"
+            aria-expanded={open}
+            aria-controls="nav-mobile-panel"
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span
+              className={`h-0.5 w-6 origin-center rounded-full bg-gold transition ${open ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`h-0.5 w-6 rounded-full bg-gold transition ${open ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`h-0.5 w-6 origin-center rounded-full bg-gold transition ${open ? "-translate-y-2 -rotate-45" : ""}`}
+            />
+          </button>
+        </div>
       </div>
 
       <div
@@ -151,9 +162,9 @@ export function Navbar() {
       >
         <nav
           className="flex max-h-[min(75vh,520px)] flex-col gap-0.5 overflow-y-auto px-4 py-4"
-          aria-label="Mobile"
+          aria-label={t.nav.mobileAria}
         >
-          {SECTION_NAV.map(({ id, label }) => {
+          {SECTION_IDS.map((id) => {
             const isActive = active === id;
             return (
               <a
@@ -166,7 +177,7 @@ export function Navbar() {
                     : "text-cream/80 hover:bg-white/[0.04] hover:text-parchment"
                 }`}
               >
-                <span>{label}</span>
+                <span>{navLabel(id)}</span>
                 {isActive && <span className="size-1.5 rounded-full bg-gold" />}
               </a>
             );

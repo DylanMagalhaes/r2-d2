@@ -1,7 +1,10 @@
 import type { ReactNode } from "react";
 import { Package, TrendingUp, Trophy, type LucideIcon } from "lucide-react";
+import { useLanguage } from "../../i18n/languageContext";
 import { PartnershipFaq } from "./PartnershipFaq";
 import { GoldAccent, SectionHeader } from "./SectionHeader";
+
+const PILLAR_ICONS: readonly LucideIcon[] = [Trophy, Package, TrendingUp];
 
 function BulletList({ items }: { items: readonly string[] }) {
   return (
@@ -54,6 +57,9 @@ function PillarCard({
 }
 
 export function PartnershipSection() {
+  const { t } = useLanguage();
+  const p = t.partnership;
+
   return (
     <section
       id="partenariat"
@@ -64,114 +70,81 @@ export function PartnershipSection() {
           <SectionHeader
             className="md:col-span-7"
             step="06"
-            kicker="Partenariat"
+            kicker={p.kicker}
             title={
               <>
-                Déployez R2-D2 <GoldAccent>avec nous</GoldAccent>
+                {p.titleBefore} <GoldAccent>{p.titleAccent}</GoldAccent>
               </>
             }
           />
           <p className="text-[15px] font-light leading-relaxed text-cream/60 md:col-span-5 md:pb-2">
-            Nous accompagnons opérateurs, lieux premium et équipes
-            événementielles&nbsp;: mise en œuvre terrain, transfert de
-            compétences et suivi après installation — sans modèle franchise.
+            {p.intro}
           </p>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-8 md:mt-16 lg:grid-cols-3 lg:gap-9">
-          <PillarCard
-            Icon={Trophy}
-            title="Formation & montée en compétences"
-            subtitle="Une équipe autonome en quelques séances concrètes."
-          >
-            <p>
-              Notre programme vous transmet l&apos;essentiel&nbsp;: pilotage des
-              équipements robotiques, gestion des flux, standards qualité du
-              concept et posture service premium dans votre contexte.
-            </p>
-            <BulletList
-              items={[
-                "Pilotage des robots",
-                "Standards qualité & hygiène",
-                "Gestion du flux clients",
-                "Expérience d&apos;accueil premium",
-                "Maintenance de premier niveau",
-                "Suivi après mise en service",
-              ]}
-            />
-          </PillarCard>
+          {p.pillars.map((pillar, i) => {
+            const Icon = PILLAR_ICONS[i]!;
+            const isReady = i === 1;
+            const isPerf = i === 2;
 
-          <PillarCard
-            Icon={Package}
-            title="Livré prêt à l’emploi"
-            subtitle="Équipement, média et carte : nous structurons le départ."
-          >
-            <p>
-              R2-D2 Coffee peut être déployé{" "}
-              <em className="text-cream/85">avec un socle déjà défini</em> —
-              automatisation, identité packs, carte et recettes, et repères
-              digitaux lorsque c’est prévu avec vous.
-            </p>
-            <BulletList
-              items={[
-                "Équipements robotiques",
-                "Supports d’habillage marque possible",
-                "Carte produits & recettes",
-                "Marketing & médias locaux (selon dossier)",
-                "Formation à l’ouverture",
-                "Support continu 7j/7",
-              ]}
-            />
-          </PillarCard>
+            return (
+              <PillarCard
+                key={pillar.title}
+                Icon={Icon}
+                title={pillar.title}
+                subtitle={pillar.subtitle}
+              >
+                {i === 0 && "body" in pillar ? <p>{pillar.body}</p> : null}
 
-          <PillarCard
-            Icon={TrendingUp}
-            title="Économique & performance"
-            subtitle="Une production automatisée, au service du ticket et de la marge."
-          >
-            <p>
-              Votre robot opère{" "}
-              <strong className="font-medium text-gold-pale">
-                sans interruption des cycles prévus — ni pause ni charge sociale
-                de production équivalente
-              </strong>
-              . Le ticket moyen peut progresser lorsque le lieu capitalise sur
-              l&apos;expérience spectacle et la qualité perçue.
-            </p>
+                {isReady && "bodyEm" in pillar ? (
+                  <p>
+                    {pillar.bodyBefore}{" "}
+                    <em className="text-cream/85">{pillar.bodyEm}</em>
+                    {pillar.bodyAfter}
+                  </p>
+                ) : null}
 
-            <ul className="mt-7 space-y-4 border-t border-white/[0.08] pt-7">
-              {[
-                [
-                  "−80%",
-                  "de coûts opérationnels",
-                  "vs. café traditionnel (ordre)",
-                ],
-                ["×2", "ticket moyen", "situations comparables rapportées"],
-                ["1er mois", "retour envisageable", "selon contexte lieu"],
-              ].map(([k, label, hint]) => (
-                <li
-                  key={label}
-                  className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-4 text-left"
-                >
-                  <div className="bg-linear-to-r from-gold-light to-gold bg-clip-text font-cinzel text-xl font-medium tracking-wide text-transparent">
-                    {k}
-                  </div>
-                  <div className="mt-1 font-cinzel text-[11px] uppercase tracking-[0.2em] text-gold/75">
-                    {label}
-                  </div>
-                  <div className="mt-1 text-[13px] font-light text-cream/50">
-                    {hint}
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 rounded-lg border border-white/[0.05] bg-ink/40 px-3.5 py-3 font-raleway text-[11px] font-light leading-relaxed text-cream/45">
-              Indicateurs donnés à titre illustratif sous réserve d&apos;étude
-              d&apos;emplacement et du modèle économique de votre projet. Aucun
-              résultat n&apos;est garanti ou contractuel hors proposition écrite
-              après analyse.
-            </p>
-          </PillarCard>
+                {isPerf && "bodyStrong" in pillar ? (
+                  <p>
+                    {pillar.bodyBefore}{" "}
+                    <strong className="font-medium text-gold-pale">
+                      {pillar.bodyStrong}
+                    </strong>
+                    {pillar.bodyAfter}
+                  </p>
+                ) : null}
+
+                {"bullets" in pillar ? <BulletList items={pillar.bullets} /> : null}
+
+                {isPerf && "metrics" in pillar ? (
+                  <>
+                    <ul className="mt-7 space-y-4 border-t border-white/[0.08] pt-7">
+                      {pillar.metrics.map(([k, label, hint]) => (
+                        <li
+                          key={label}
+                          className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-4 text-left"
+                        >
+                          <div className="bg-linear-to-r from-gold-light to-gold bg-clip-text font-cinzel text-xl font-medium tracking-wide text-transparent">
+                            {k}
+                          </div>
+                          <div className="mt-1 font-cinzel text-[11px] uppercase tracking-[0.2em] text-gold/75">
+                            {label}
+                          </div>
+                          <div className="mt-1 text-[13px] font-light text-cream/50">
+                            {hint}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-5 rounded-lg border border-white/[0.05] bg-ink/40 px-3.5 py-3 font-raleway text-[11px] font-light leading-relaxed text-cream/45">
+                      {pillar.disclaimer}
+                    </p>
+                  </>
+                ) : null}
+              </PillarCard>
+            );
+          })}
         </div>
 
         <PartnershipFaq />

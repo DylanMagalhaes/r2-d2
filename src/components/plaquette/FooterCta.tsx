@@ -1,61 +1,46 @@
 import { useMemo, useState, type FormEvent } from "react";
+import { useLanguage } from "../../i18n/languageContext";
 import { GoldAccent } from "./SectionHeader";
 
 const CONTACT_EMAIL = "contact@r2-d2-france.com";
-
-const CONTACTS = [
-  {
-    label: "Email",
-    value: CONTACT_EMAIL,
-    href: `mailto:${CONTACT_EMAIL}`,
-  },
-  {
-    label: "Téléphone",
-    value: "+33 (0)7 77 31 87 87",
-    href: "tel:+330777318787",
-  },
-] as const;
-
-const INTENTION_OPTS = [
-  { value: "equipement", label: "Équipement & déploiement lieu" },
-  { value: "habillage", label: "Habillage machine — couleurs marque" },
-  { value: "lieu_evenementiel", label: "Événements & lieu public" },
-  { value: "presse_partenariat", label: "Presse & partenariats" },
-  { value: "autre", label: "Autre demande" },
-] as const;
-
-function buildMailtoBody(fd: FormData): { subject: string; body: string } {
-  const intentionVal = String(fd.get("intention") ?? "");
-  const intentionLabel =
-    INTENTION_OPTS.find((o) => o.value === intentionVal)?.label ?? intentionVal;
-  const name = String(fd.get("nom") ?? "").trim();
-  const company = String(fd.get("entreprise") ?? "").trim();
-  const email = String(fd.get("email") ?? "").trim();
-  const phone = String(fd.get("telephone") ?? "").trim();
-  const msg = String(fd.get("message") ?? "").trim();
-
-  const lines = [
-    `[Objet demande] ${intentionLabel}`,
-    "",
-    `[Nom contact] ${name || "—"}`,
-    `[Structure] ${company || "—"}`,
-    `[Réponse souhaitée sur] ${email}`,
-    `[Téléphone] ${phone || "—"}`,
-    "",
-    "[Précisions]",
-    msg || "—",
-  ];
-
-  return {
-    subject: `R2-D2 — Lead ${intentionLabel}`,
-    body: lines.join("\n"),
-  };
-}
+const PHONE = "+33 (0)7 77 31 87 87";
+const PHONE_HREF = "tel:+330777318787";
 
 export function FooterCta() {
+  const { t } = useLanguage();
+  const c = t.contact;
   const [sentHint, setSentHint] = useState(false);
 
   const emailPattern = useMemo(() => String.raw`[^\s@]+@[^\s@]+\.[^\s@]+`, []);
+
+  function buildMailtoBody(fd: FormData) {
+    const intentionVal = String(fd.get("intention") ?? "");
+    const intentionLabel =
+      c.intentions.find((o) => o.value === intentionVal)?.label ?? intentionVal;
+    const name = String(fd.get("nom") ?? "").trim();
+    const company = String(fd.get("entreprise") ?? "").trim();
+    const email = String(fd.get("email") ?? "").trim();
+    const phone = String(fd.get("telephone") ?? "").trim();
+    const msg = String(fd.get("message") ?? "").trim();
+    const m = c.mailto;
+
+    const lines = [
+      `${m.request} ${intentionLabel}`,
+      "",
+      `${m.name} ${name || m.empty}`,
+      `${m.company} ${company || m.empty}`,
+      `${m.reply} ${email}`,
+      `${m.phone} ${phone || m.empty}`,
+      "",
+      m.details,
+      msg || m.empty,
+    ];
+
+    return {
+      subject: `${m.subjectPrefix} ${intentionLabel}`,
+      body: lines.join("\n"),
+    };
+  }
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -82,22 +67,21 @@ export function FooterCta() {
             <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-gold/20 bg-gold/[0.06] px-4 py-2 font-cinzel text-[10px] uppercase tracking-[0.35em] text-gold/90">
               <span className="text-gold">07</span>
               <span aria-hidden="true" className="h-3 w-px bg-gold/25" />
-              <span>Contact</span>
+              <span>{c.step}</span>
             </div>
             <h2 className="font-cinzel text-[clamp(1.75rem,3.8vw,2.75rem)] font-light leading-snug tracking-wide text-parchment">
-              Parlons de votre <GoldAccent>projet</GoldAccent>
+              {c.titleBefore} <GoldAccent>{c.titleAccent}</GoldAccent>
             </h2>
             <p className="mt-5 max-w-xl text-[15px] font-light leading-relaxed text-cream/60">
-              Déploiement, habillage marque ou étude lieu : précisez en deux
-              minutes votre contexte&nbsp;; nous revenons vers vous sous{" "}
-              <span className="text-cream/75">48&nbsp;h ouvrées</span> après
-              lecture du message.
+              {c.introBefore}
+              <span className="text-cream/75">{c.introHighlight}</span>
+              {c.introAfter}
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-gold to-[#9a7328] px-8 py-3.5 font-cinzel text-[11px] font-semibold uppercase tracking-[0.24em] text-ink shadow-lg shadow-gold/15 transition hover:brightness-110"
             >
-              Écrire directement
+              {c.writeDirect}
               <span aria-hidden="true" className="text-ink/80">
                 →
               </span>
@@ -113,12 +97,10 @@ export function FooterCta() {
               noValidate
             >
               <p className="font-cinzel text-[11px] uppercase tracking-[0.35em] text-gold/80">
-                Formulaire qualification
+                {c.formTitle}
               </p>
               <p className="mt-3 text-[13.5px] font-light leading-relaxed text-cream/52">
-                L&apos;envoi ouvre votre client mail avec le message prérempli —
-                aucune donnée n&apos;est stockée sur ce site sans votre action
-                sur la messagerie.
+                {c.formHint}
               </p>
 
               <div className="mt-7 grid gap-5 sm:grid-cols-2">
@@ -127,7 +109,7 @@ export function FooterCta() {
                     htmlFor="intent"
                     className="block font-cinzel text-[10px] uppercase tracking-[0.28em] text-gold/70"
                   >
-                    Vous contactez nous pour
+                    {c.reasonLabel}
                   </label>
                   <select
                     id="intent"
@@ -136,7 +118,7 @@ export function FooterCta() {
                     defaultValue="equipement"
                     className="mt-2 w-full rounded-xl border border-white/[0.12] bg-ink/50 px-4 py-3 text-[14px] font-light text-cream/88 outline-none transition focus:border-gold/40 focus:ring-1 focus:ring-gold/30"
                   >
-                    {INTENTION_OPTS.map(({ value, label }) => (
+                    {c.intentions.map(({ value, label }) => (
                       <option key={value} value={value}>
                         {label}
                       </option>
@@ -149,7 +131,7 @@ export function FooterCta() {
                     htmlFor="nom"
                     className="block font-cinzel text-[10px] uppercase tracking-[0.28em] text-gold/70"
                   >
-                    Nom et prénom
+                    {c.nameLabel}
                   </label>
                   <input
                     id="nom"
@@ -157,7 +139,7 @@ export function FooterCta() {
                     type="text"
                     autoComplete="name"
                     className="mt-2 w-full rounded-xl border border-white/[0.12] bg-ink/50 px-4 py-3 text-[14px] font-light text-cream/88 outline-none transition placeholder:text-cream/30 focus:border-gold/40 focus:ring-1 focus:ring-gold/30"
-                    placeholder="Sophie Laurent"
+                    placeholder={c.placeholders.name}
                   />
                 </div>
 
@@ -166,7 +148,7 @@ export function FooterCta() {
                     htmlFor="entreprise"
                     className="block font-cinzel text-[10px] uppercase tracking-[0.28em] text-gold/70"
                   >
-                    Structure (optionnel)
+                    {c.companyLabel}
                   </label>
                   <input
                     id="entreprise"
@@ -174,7 +156,7 @@ export function FooterCta() {
                     type="text"
                     autoComplete="organization"
                     className="mt-2 w-full rounded-xl border border-white/[0.12] bg-ink/50 px-4 py-3 text-[14px] font-light text-cream/88 outline-none transition placeholder:text-cream/30 focus:border-gold/40 focus:ring-1 focus:ring-gold/30"
-                    placeholder="SAS exemple"
+                    placeholder={c.placeholders.company}
                   />
                 </div>
 
@@ -183,7 +165,8 @@ export function FooterCta() {
                     htmlFor="email-contact"
                     className="block font-cinzel text-[10px] uppercase tracking-[0.28em] text-gold/70"
                   >
-                    E-mail<span className="text-gold/90">*</span>
+                    {c.emailLabel}
+                    <span className="text-gold/90">*</span>
                   </label>
                   <input
                     id="email-contact"
@@ -194,7 +177,7 @@ export function FooterCta() {
                     required
                     pattern={emailPattern}
                     className="mt-2 w-full rounded-xl border border-white/[0.12] bg-ink/50 px-4 py-3 text-[14px] font-light text-cream/88 outline-none transition placeholder:text-cream/30 focus:border-gold/40 focus:ring-1 focus:ring-gold/30"
-                    placeholder={`vous@${"exemple.fr"}`}
+                    placeholder={c.placeholders.email}
                   />
                 </div>
 
@@ -203,7 +186,7 @@ export function FooterCta() {
                     htmlFor="tel-contact"
                     className="block font-cinzel text-[10px] uppercase tracking-[0.28em] text-gold/70"
                   >
-                    Téléphone (optionnel)
+                    {c.phoneLabel}
                   </label>
                   <input
                     id="tel-contact"
@@ -211,7 +194,7 @@ export function FooterCta() {
                     type="tel"
                     autoComplete="tel"
                     className="mt-2 w-full rounded-xl border border-white/[0.12] bg-ink/50 px-4 py-3 text-[14px] font-light text-cream/88 outline-none transition placeholder:text-cream/30 focus:border-gold/40 focus:ring-1 focus:ring-gold/30"
-                    placeholder="+33 6 12 34 56 78"
+                    placeholder={c.placeholders.phone}
                   />
                 </div>
 
@@ -220,14 +203,14 @@ export function FooterCta() {
                     htmlFor="message-contact"
                     className="block font-cinzel text-[10px] uppercase tracking-[0.28em] text-gold/70"
                   >
-                    Contexte projet
+                    {c.messageLabel}
                   </label>
                   <textarea
                     id="message-contact"
                     name="message"
                     rows={4}
                     className="mt-2 w-full resize-y rounded-xl border border-white/[0.12] bg-ink/50 px-4 py-3 text-[14px] font-light leading-relaxed text-cream/88 outline-none transition placeholder:text-cream/30 focus:border-gold/40 focus:ring-1 focus:ring-gold/30"
-                    placeholder="Zone visée, type de lieu, jalons envisagés…"
+                    placeholder={c.placeholders.message}
                   />
                 </div>
               </div>
@@ -236,7 +219,7 @@ export function FooterCta() {
                 type="submit"
                 className="mt-7 w-full rounded-full bg-linear-to-r from-gold to-[#9a7328] px-8 py-3.5 font-cinzel text-[11px] font-semibold uppercase tracking-[0.24em] text-ink shadow-lg shadow-gold/12 transition hover:brightness-110 sm:w-auto"
               >
-                Composer l&apos;e-mail
+                {c.submit}
               </button>
 
               {sentHint ? (
@@ -244,35 +227,40 @@ export function FooterCta() {
                   className="mt-4 text-[13px] font-light text-gold-light/95"
                   role="status"
                 >
-                  Si votre messagerie ne s&apos;ouvre pas automatiquement,
-                  utilisez nos coordonnées ci‑dessous.
+                  {c.sentHint}
                 </p>
               ) : null}
             </form>
 
             <ul className="mt-10 grid gap-5 sm:grid-cols-2">
-              {CONTACTS.map(({ label, value, href }) => (
-                <li
-                  key={label}
-                  className="group rounded-xl border border-white/[0.07] bg-white/[0.02] px-5 py-4 transition hover:border-gold/25 hover:bg-white/[0.03]"
+              <li className="group rounded-xl border border-white/[0.07] bg-white/[0.02] px-5 py-4 transition hover:border-gold/25 hover:bg-white/[0.03]">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.28em] text-gold/70">
+                  {c.contacts.email}
+                </span>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="mt-1 block text-sm font-light text-cream/85 transition group-hover:text-gold"
                 >
-                  <span className="block text-[10px] font-medium uppercase tracking-[0.28em] text-gold/70">
-                    {label}
-                  </span>
-                  <a
-                    href={href}
-                    className="mt-1 block text-sm font-light text-cream/85 transition group-hover:text-gold"
-                  >
-                    {value}
-                  </a>
-                </li>
-              ))}
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li className="group rounded-xl border border-white/[0.07] bg-white/[0.02] px-5 py-4 transition hover:border-gold/25 hover:bg-white/[0.03]">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.28em] text-gold/70">
+                  {c.contacts.phone}
+                </span>
+                <a
+                  href={PHONE_HREF}
+                  className="mt-1 block text-sm font-light text-cream/85 transition group-hover:text-gold"
+                >
+                  {PHONE}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
         <p className="mt-16 border-t border-white/[0.06] pt-8 font-cinzel text-[10px] uppercase tracking-[0.32em] text-cream/30">
-          Maison R2-D2 · Coffee × Ice Cream · France
+          {c.footer}
         </p>
       </div>
     </section>
