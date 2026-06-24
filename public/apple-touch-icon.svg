@@ -1,7 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="R2-D2 Coffee &amp; Ice Cream">
-  <rect width="180" height="180" rx="40" fill="#0a0a0a"/>
-  <circle cx="90" cy="90" r="62" fill="none" stroke="#c9a84c" stroke-width="5"/>
-  <circle cx="90" cy="90" r="45" fill="none" stroke="#edd98a" stroke-width="2" opacity=".55"/>
-  <text x="90" y="86" text-anchor="middle" fill="#f0d080" font-family="Georgia, serif" font-size="38" font-weight="700" letter-spacing="3">R2-D2</text>
-  <text x="90" y="114" text-anchor="middle" fill="#f5edd6" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="6">COFFEE</text>
+  <!-- Background -->
+  <rect width="180" height="180" rx="36" fill="#0c0b09"/>
+  <!-- Outer gold ring -->
+  <circle cx="90" cy="96" r="68" fill="none" stroke="#c9a84c" stroke-width="4"/>
+  <!-- Steam -->
+  <path d="M62 44 C59 36 64 29 61 21" fill="none" stroke="#edd98a" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+  <path d="M90 40 C87 32 92 25 89 16" fill="none" stroke="#edd98a" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+  <path d="M118 44 C115 36 120 29 117 21" fill="none" stroke="#edd98a" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+  <!-- Cup rim -->
+  <path d="M46 65 L134 65" stroke="#edd98a" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Cup body -->
+  <path d="M49 65 L56 130 Q56 136 62 136 L118 136 Q124 136 124 130 L131 65" fill="none" stroke="#edd98a" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Handle -->
+  <path d="M124 85 C148 85 148 115 124 115" fill="none" stroke="#c9a84c" stroke-width="4" stroke-linecap="round"/>
+  <!-- R2-D2 text below -->
+  <text x="90" y="163" text-anchor="middle" fill="#c9a84c" font-family="Georgia, serif" font-size="18" font-weight="700" letter-spacing="4">R2-D2</text>
 </svg>
