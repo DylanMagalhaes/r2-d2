@@ -26,7 +26,7 @@ export const en = {
   cover: {
     kicker: "R2-D2 House · France",
     titleBefore: "Robotic excellence at the service of",
-    titleAccent: "taste",
+    titleAccent: "coffee & ice cream",
     lead:
       "Built for premium venues, brands and events seeking a standout coffee & ice cream experience — machines can be wrapped in your brand colours.",
     body:

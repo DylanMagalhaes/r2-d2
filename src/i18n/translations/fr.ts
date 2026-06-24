@@ -26,7 +26,7 @@ export const fr = {
   cover: {
     kicker: "Maison R2-D2 · France",
     titleBefore: "L'excellence robotique au service du",
-    titleAccent: "goût",
+    titleAccent: "café & des glaces",
     lead:
       "Pensé pour lieux premium, marques et événements qui veulent une expérience café & glaces forte en image — les automates peuvent être habillés aux couleurs de votre marque.",
     body:
